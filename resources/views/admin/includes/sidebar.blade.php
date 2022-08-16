@@ -87,14 +87,21 @@
 
             <li class="nav-item">
                 <a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">تذاكر المراسلات   </span>
+                    <span class="menu-title" data-i18n="nav.dash.main">{{__('admin/sidebar.settings')}}</span>
                     <span
                         class="badge badge badge-danger  badge-pill float-right mr-2">0</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
-                                          data-i18n="nav.dash.ecommerce"> تذاكر الطلاب </a>
-                    </li>
+                     <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">{{__('admin/sidebar.shipping methods')}}</a>
+                            <ul class="menu-content">
+                                   <li><a class="menu-item" href="{{route('admin.dashboard.edit.shipping.methods','free')}}" data-i18n="nav.templates.vert.classic_menu">{{__('admin/sidebar.free shipping')}}</a>
+                                   </li>
+                                   <li><a class="menu-item" href="{{route('admin.dashboard.edit.shipping.methods','inner')}}">{{__('admin/sidebar.inner shipping')}}</a>
+                                   </li>
+                                   <li><a class="menu-item" href="{{route('admin.dashboard.edit.shipping.methods','outer')}}" data-i18n="nav.templates.vert.compact_menu">{{__('admin/sidebar.outer shipping')}}</a>
+                                   </li>
+                            </ul>
+                     </li>
                 </ul>
             </li>
 
@@ -105,18 +112,12 @@
                     <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">Vertical</a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="../vertical-menu-template"
-                                   data-i18n="nav.templates.vert.classic_menu">Classic Menu</a>
+                                   data-i18n="nav.templates.vert.classic_menu">توصيل مجاني</a>
                             </li>
-                            <li><a class="menu-item" href="../vertical-modern-menu-template">Modern Menu</a>
+                            <li><a class="menu-item" href="../vertical-modern-menu-template">توصيل داخلي</a>
                             </li>
                             <li><a class="menu-item" href="../vertical-compact-menu-template"
-                                   data-i18n="nav.templates.vert.compact_menu">Compact Menu</a>
-                            </li>
-                            <li><a class="menu-item" href="../vertical-content-menu-template"
-                                   data-i18n="nav.templates.vert.content_menu">Content Menu</a>
-                            </li>
-                            <li><a class="menu-item" href="../vertical-overlay-menu-template"
-                                   data-i18n="nav.templates.vert.overlay_menu">Overlay Menu</a>
+                                   data-i18n="nav.templates.vert.compact_menu">توصيل خارجي</a>
                             </li>
                         </ul>
                     </li>
