@@ -54,92 +54,48 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> الاسم </label>
-                                                            <input type="text" value="{{$shipping_method->value}}" id="name"
+                                                            <label for="projectinput1"> {{__('admin/settings.name')}} </label>
+                                                            <input type="text" value="{{$shipping_method->translations[0]->value}}" id="value"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   name="name">
-                                                            @error("name")
+                                                                   name="value">
+                                                            @error("value")
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                     <div class="col-md-6 ">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">{{__('admin/settings.shipping value')}}</label>
+                                                            <input type="number" id="plain_value"
+                                                                   class="form-control"
+                                                                   placeholder="  " name="plain_value"
+                                                              value="{{$shipping_method->plain_value}}">
+
+                                                            @error("plain_value")
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-
+<!--                                              
                                                 <div class="row">
-                                                    <div class="col-md-6 ">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> رقم الهاتف </label>
-                                                            <input type="text" id="mobile"
-                                                                   class="form-control"
-                                                                   placeholder="  " name="mobile"
-                                                              value="">
-
-                                                            @error("mobile")
-                                                            <span class="text-danger"> {{$message}}</span>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mt-1">
+                                                            <input type="checkbox" value="1" id="switcheryColor4"
+                                                                   class="switchery"
+                                                                   data-color = "success"
+                                                                   name="active"
+                                                                   checked/>
+                                                            <label for="projectinput1"> {{__('admin/settings.status')}} </label>
+                                                            @error("status")
+                                                            <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 ">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> ألبريد الالكتروني </label>
-                                                            <input type="text" id="email"
-                                                                   class="form-control"
-                                                                   placeholder="  " name="email"
-                                                                   value="">
-
-                                                            @error("email")
-                                                            <span class="text-danger"> {{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-
-                                                <div class="row">
-                                                    <div class="class col-12">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">كلمة المرور  </label>
-                                                            <input type="password" id="password"
-                                                                   class="form-control"
-                                                                   placeholder="  " name="password">
-
-                                                            @error("password")
-                                                            <span class="text-danger"> {{$message}}</span>
-                                                            @enderror
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-
-                                                <di class="row">
-                                                    <div class="col-md-6 ">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> العنوان  </label>
-                                                            <input type="text" id="pac-input"
-                                                                   class="form-control"
-                                                                   placeholder="  " name="address"
-                                                                   value=""
-                                                            >
-
-                                                            @error("address")
-                                                            <span class="text-danger"> {{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                </di>
-                                               
-
+                                                </div>    -->
                                             </div>
-
-
-                                            <div id="map" style="height: 500px;width: 1000px;"></div>
-
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
