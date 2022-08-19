@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\ProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -25,11 +26,18 @@ Route::group(
         {
             Route::get('/',[DashboardController::class, 'index'])->name('admin.dashboard');
             Route::get('/logout',[LoginController::class, 'logout'])->name('admin.logout');
+
             Route::group(['prefix'=>'settings'],function()
             {
                 Route::get('shipping-methods/{type}',[SettingsController::class,'editShippingMethods'])->name('admin.dashboard.edit.shipping.methods');
                 Route::post('shipping-methods/{id}',[SettingsController::class,'updateShippingMethods'])->name('admin.dashboard.update.shipping.methods');
             });
+
+            Route::group(['prefix' => 'profile'], function () {
+                Route::get('edit', [ProfileController::class,'editProfile'])->name('edit.profile');
+                Route::put('update', [ProfileController::class,'updateprofile'])->name('update.profile');
+            });
+            
         }); 
  
         Route::group(['namespace' => 'Admin', 'middleware' => 'guest:admin', 'prefix' => 'admin'], function()
