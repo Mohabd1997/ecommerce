@@ -11,4 +11,9 @@
         'outer shipping' => 'توصيل خارجي',
         'name' => 'الاسم',
         'shipping value' => 'قيمة التوصيل',
+        'main categories' => 'الأقسام الرئيسية',
+        'categories' => 'الأقسام',
+        'add new category' => 'إضافة قسم جديد',
+        'add new sub category' => 'إضافة قسم فرعي جديد',
+        'show all' => 'عرض الكل',
     ];

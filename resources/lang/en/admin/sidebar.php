@@ -11,5 +11,10 @@
         'outer shipping' => 'Outer Shipping',
         'name' => 'Name',
         'shipping value' => 'Shipping Value',
+        'main categories' => 'Main Categories',
+        'categories' => 'Categories',
+        'add new category' => 'Add New Category',
+        'add new sub category' => 'Add New Sub Category',
+        'show all' => 'Show All',
 
     ];
