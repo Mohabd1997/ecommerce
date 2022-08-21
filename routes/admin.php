@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\MainCategoriesController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -38,6 +39,35 @@ Route::group(
                 Route::put('update', [ProfileController::class,'updateprofile'])->name('update.profile');
             });
             
+            ###################################### Category routes ##############################################
+
+            Route::group(['prefix' => 'main_categories'], function () {
+                Route::get('/', [MainCategoriesController::class,'index'])->name('admin.maincategories');
+                Route::get('create', [MainCategoriesController::class,'create'])->name('admin.maincategories.create');
+                Route::post('store', [MainCategoriesController::class,'store'])->name('admin.maincategories.store');
+                Route::get('edit/{id}', [MainCategoriesController::class,'edit'])->name('admin.maincategories.edit');
+                Route::put('update/{id}', [MainCategoriesController::class,'update'])->name('admin.maincategories.update');
+                Route::get('delete/{id}', [MainCategoriesController::class,'destroy'])->name('admin.maincategories.delete');
+                Route::put('changeStatus/{id}', [MainCategoriesController::class,'changeStatus'])->name('admin.maincategories.status');
+            });
+
+            ###################################### End category routes ##########################################
+
+
+            ###################################### brands routes ################################################
+
+            Route::group(['prefix' => 'brands', 'middleware' => 'can:brands'], function () {
+                Route::get('/', [BrandsController::class,'index'])->name('admin.brands');
+                Route::get('create', [BrandsController::class,'create'])->name('admin.brands.create');
+                Route::post('store', [BrandsController::class,'store'])->name('admin.brands.store');
+                Route::get('edit/{id}', [BrandsController::class,'edit'])->name('admin.brands.edit');
+                Route::post('update/{id}', [BrandsController::class,'update'])->name('admin.brands.update');
+                Route::get('delete/{id}', [BrandsController::class,'destroy'])->name('admin.brands.delete');
+            
+            });
+
+            ###################################### End category routes ##########################################
+
         }); 
  
         Route::group(['namespace' => 'Admin', 'middleware' => 'guest:admin', 'prefix' => 'admin'], function()

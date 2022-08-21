@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class settingTranslation extends Model
+class BrandTranslation extends Model
 {
-    protected $fillable = ['value'];
-    public $timestamps = false;
-
+    use HasFactory;
 }

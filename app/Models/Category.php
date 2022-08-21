@@ -26,7 +26,7 @@ class category extends Model
      * 
      * @var array
      */
-    protected $fillable = ['parent_id', 'slug', 'is_active'];
+    protected $fillable = ['slug', 'parent_id', 'is_active'];
 
      /**
      * The attributes that should be cast to native types.
@@ -44,54 +44,15 @@ class category extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
-
-     /**
-     * Set the given settings
-     * 
-     * @param array $settings
-     * @return void
-     */
-    public static function setMany($settings)
-    {
-        foreach($settings as $key => $value)
-        {
-            self::set($key, $value);
-        }
-    }
-
-     /**
-     * Set the given settings
-     * 
-     * @param string $key
-     * @param mixed $value
-     * @return void
-     */
-    public static function set($key,$value)
-    {
-        if($key === 'translatable')
-        {
-            return static::setTranslatableSettings($value);
-        }
-        if(is_array($value))
-        {
-            $value = json_encode($value);
-        }
-
-        static::updateOrCreate(['key'=>$key],['plain_value'=>$value]);
-    }
-
-     /**
-     * Set a translatable settings
-     * 
-     * @param array $settings
-     * @return void
-     */
-    public static function setTranslatableSettings($settings = [])
-    {
-        foreach($settings as $key => $value)
-        {
-            static::updateOrCreate(['key'=>$key],['is_translatable'=>true,'value' => $value]);
-        }
-    }
     
+    public function getActive()
+    {
+        $result = $this->is_active == 0 ? __('admin/general.not active'):__('admin/general.active');
+        return $result;
+    }
+  
+
+    public function scopeActive($query){
+        return $query -> where('is_active',1) ;
+    }
 }
