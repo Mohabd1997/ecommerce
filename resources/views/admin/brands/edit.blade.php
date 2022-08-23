@@ -9,11 +9,11 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="">الرئيسية </a>
+                                <li class="breadcrumb-item"><a href="">{{__('admin/general.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.brands')}}"> الماركات التجارية </a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.brands')}}">{{__('admin/brands.brands')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active"> تعديل - {{$brand -> name}}
+                                <li class="breadcrumb-item active"> {{__('admin/general.edit')}} - {{$brand -> name}}
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> تعديل ماركة تجارية </h4>
+                                    <h4 class="card-title" id="basic-layout-form">{{__('admin/general.edit').' '.__('admin/brands.brand')}}</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -55,12 +55,12 @@
                                                 <div class="text-center">
                                                     <img
                                                         src="{{$brand  -> photo}}"
-                                                        class="rounded-circle  height-250" alt="صورة القسم  ">
+                                                        class="rounded-circle  height-250" alt="{{__('admin/brands.brand pic')}}">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label> صوره الماركة </label>
+                                                <label>{{__('admin/brands.brand pic')}}</label>
                                                 <label id="projectinput7" class="file center-block">
                                                     <input type="file" id="file" name="photo">
                                                     <span class="file-custom"></span>
@@ -76,7 +76,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> الاسم
+                                                            <label for="projectinput1"> {{__('admin/general.name')}}
                                                             </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
@@ -96,7 +96,7 @@
                                                                    class="switchery" data-color="success"
                                                                    @if($brand -> is_active == 1)checked @endif />
                                                             <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة  </label>
+                                                                   class="card-title ml-1">{{__('admin/general.status')}}</label>
 
                                                             @error("is_active")
                                                             <span class="text-danger">{{$message }}</span>
@@ -106,7 +106,7 @@
 
                                                     {{--     <div class="col-md-6">
                                                               <div class="form-group">
-                                                                  <label for="projectinput1"> اسم بالرابط
+                                                                  <label for="projectinput1"> {{__('admin/general.slug')}}
                                                                   </label>
                                                                   <input type="text" id="name"
                                                                          class="form-control"
@@ -129,10 +129,10 @@
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
-                                                    <i class="ft-x"></i> تراجع
+                                                    <i class="ft-x"></i> {{__('admin/general.back')}}
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> تحديث
+                                                    <i class="la la-check-square-o"></i> {{__('admin/general.update')}}
                                                 </button>
                                             </div>
                                         </form>

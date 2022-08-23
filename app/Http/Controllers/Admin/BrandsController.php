@@ -86,7 +86,13 @@ class BrandsController extends Controller
      */
     public function edit($id)
     {
-        //
+         //get specific brands and its translations
+         $brand = Brand::find($id);
+
+         if (!$brand)
+             return redirect()->route('admin.brands')->with(['error' => 'هذه الماركة غير موجود ']);
+ 
+         return view('admin.brands.edit', compact('brand'));
     }
 
     /**
@@ -98,7 +104,46 @@ class BrandsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            //validation
+
+            //update DB
+
+
+            $brand = Brand::find($id);
+
+            if (!$brand)
+                return redirect()->route('admin.brands')->with(['error' => 'هذا الماركة غير موجود']);
+
+
+            DB::beginTransaction();
+            if ($request->has('photo')) {
+                $fileName = uploadImage('brands', $request->photo);
+                Brand::where('id', $id)
+                    ->update([
+                        'photo' => $fileName,
+                    ]);
+            }
+
+            if (!$request->has('is_active'))
+                $request->request->add(['is_active' => 0]);
+            else
+                $request->request->add(['is_active' => 1]);
+
+            $brand->update($request->except('_token', 'id', 'photo'));
+
+            //save translations
+            $brand->name = $request->name;
+            $brand->save();
+
+            DB::commit();
+            return redirect()->route('admin.brands')->with(['success' => 'تم ألتحديث بنجاح']);
+
+        } catch (\Exception $ex) {
+
+            DB::rollback();
+            return redirect()->route('admin.brands')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+        }
     }
 
     /**
@@ -109,6 +154,19 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            //get specific categories and its translations
+            $brand = Brand::find($id);
+
+            if (!$brand)
+                return redirect()->route('admin.brands')->with(['error' => 'هذا الماركة غير موجود ']);
+
+            $brand->delete();
+
+            return redirect()->route('admin.brands')->with(['success' => 'تم  الحذف بنجاح']);
+
+        } catch (\Exception $ex) {
+            return redirect()->route('admin.brands')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+        }
     }
 }
