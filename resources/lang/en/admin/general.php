@@ -5,6 +5,7 @@
         'delete' => 'Delete',
         'update' => 'Update',
         'add' => 'Add',
+        'actions' => 'Actions', 
         'name' => 'Name',
         'home' => 'Home',
         'back' => 'Back',
@@ -16,6 +17,9 @@
         'all' => 'All',
         'prev' => 'Prev',
         'next' => 'Next',
+        'status' => 'Status',
         'active' => 'active',
         'not active' => 'Disable',
+        'slug' => 'Slug',
+
     ];

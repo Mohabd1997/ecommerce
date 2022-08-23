@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MainCategoriesController;
+use App\Http\Controllers\Admin\BrandsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -56,7 +57,7 @@ Route::group(
 
             ###################################### brands routes ################################################
 
-            Route::group(['prefix' => 'brands', 'middleware' => 'can:brands'], function () {
+            Route::group(['prefix' => 'brands'], function () {
                 Route::get('/', [BrandsController::class,'index'])->name('admin.brands');
                 Route::get('create', [BrandsController::class,'create'])->name('admin.brands.create');
                 Route::post('store', [BrandsController::class,'store'])->name('admin.brands.store');

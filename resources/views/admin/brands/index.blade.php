@@ -10,9 +10,10 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية</a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('admin/general.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active"> الماركات التجارية
+                                <li class="breadcrumb-item active"> 
+                                {{__('admin/brands.brands')}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +27,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">جميع الماركات التجارية   </h4>
+                                    <h4 class="card-title">{{__('admin/general.all').' '.__('admin/brands.brands')}}</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -39,8 +40,8 @@
                                     </div>
                                 </div>
 
-                                @include('dashboard.includes.alerts.success')
-                                @include('dashboard.includes.alerts.errors')
+                                @include('admin.includes.alerts.success')
+                                @include('admin.includes.alerts.errors')
 
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
@@ -48,10 +49,10 @@
                                             class="table display nowrap table-striped table-bordered scroll-horizontal">
                                             <thead class="">
                                             <tr>
-                                                <th>الاسم </th>
-                                                <th>الحالة</th>
-                                                <th>صوره الماركة</th>
-                                                <th>الإجراءات</th>
+                                                <th>{{__('admin/general.name')}}</th>
+                                                <th>{{__('admin/general.status')}}</th>
+                                                <th>{{__('admin/brands.brand pic')}}</th>
+                                                <th>{{__('admin/general.actions')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -61,16 +62,16 @@
                                                     <tr>
                                                         <td>{{$brand -> name}}</td>
                                                          <td>{{$brand -> getActive()}}</td>
-                                                        <td> <img style="width: 150px; height: 100px;" src="{{$brand -> photo }}"></td>
+                                                        <td> <img style="width: 150px; height: 100px;" src="{{$brand -> photo}}"></td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
                                                                 <a href="{{route('admin.brands.edit',$brand -> id)}}"
-                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
+                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin/general.edit')}}</a>
 
 
                                                                 <a href="{{route('admin.brands.delete',$brand -> id)}}"
-                                                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف</a>
+                                                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin/general.delete')}}</a>
 
 
 
