@@ -18,7 +18,7 @@ class MainCategoriesController extends Controller
 
     public function create()
     {
-         $categories =   Category::select('id','parent_id')->get();
+        $categories =   Category::select('id','parent_id')->get();
         return view('admin.categories.create',compact('categories'));
     }  
 
@@ -64,11 +64,12 @@ class MainCategoriesController extends Controller
 
         //get specific categories and its translations
         $category = Category::orderBy('id', 'DESC')->find($id);
+        $categories =   Category::select('id','parent_id')->get();
 
         if (!$category)
             return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود ']);
 
-        return view('admin.categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category','categories'));
 
     }
     public function update($id, MainCategoryRequest $request)

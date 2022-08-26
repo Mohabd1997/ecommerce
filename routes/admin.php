@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MainCategoriesController;
 use App\Http\Controllers\Admin\BrandsController;
+use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Admin\ProductController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -68,6 +70,34 @@ Route::group(
             });
 
             ###################################### End category routes ##########################################
+
+
+              ###################################### tags routes ################################################
+
+              Route::group(['prefix' => 'tags'], function () {
+                Route::get('/',  [TagsController::class,'index'])->name('admin.tags');
+                Route::get('create',  [TagsController::class,'create'])->name('admin.tags.create');
+                Route::post('store',  [TagsController::class,'store'])->name('admin.tags.store');
+                Route::get('edit/{id}', [TagsController::class,'edit'])->name('admin.tags.edit');
+                Route::post('update/{id}', [TagsController::class,'update'])->name('admin.tags.update');
+                Route::get('delete/{id}',  [TagsController::class,'destroy'])->name('admin.tags.delete');
+            });
+
+            ###################################### End tags routes ##########################################
+
+              ###################################### products routes ################################################
+
+              Route::group(['prefix' => 'products'], function () {
+                Route::get('/',  [ProductController::class,'index'])->name('admin.products');
+                Route::get('create',  [ProductController::class,'create'])->name('admin.products.general.create');
+                Route::post('store',  [ProductController::class,'store'])->name('admin.products.general.store');
+                Route::get('edit/{id}', [ProductController::class,'edit'])->name('admin.products.edit');
+                Route::post('update/{id}', [ProductController::class,'update'])->name('admin.products.update');
+                Route::get('delete/{id}',  [ProductController::class,'destroy'])->name('admin.products.delete');
+            });
+
+            ###################################### End products routes ##########################################
+
 
         }); 
  
